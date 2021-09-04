@@ -1,0 +1,29 @@
+#Q1(a): Create bar plots to show the comparison between cumulative totals across "petal length"
+dataframe <- read.csv("F:/IIITG/THIRD SEMESTER/DA Lab/ASS2/Iris.csv")
+View(dataframe)
+barplot(dataframe$PetalLengthCm)
+
+#Q1(b): 
+
+install.packages("RColorBrewer")
+library(RColorBrewer)
+barplot(dataframe$SepalLengthCm,col  = brewer.pal(3,"Set1"))
+barplot(table(dataframe$Species,dataframe$PetalLengthCm),col  = brewer.pal(3,"Set1"))
+
+#Q1(c): 
+
+data(dataframe)
+par(mfrow=c(2,2))
+boxplot(dataframe$SepalLengthCm,col="red")
+boxplot(dataframe$SepalLengthCm~dataframe$Species,col="red")
+boxplot(dataframe$SepalLengthCm~dataframe$Species,col=heat.colors(3))
+boxplot(dataframe$SepalLengthCm~dataframe$Species,col=topo.colors(3))
+
+#Q1(d): 
+PAICOL<- read.csv("F:/IIITG/THIRD SEMESTER/DA Lab/ASS2/PAICOL.csv")
+
+plot(x=dataframe$PetalLengthCm,y=dataframe$Species)
+PAICOL$DATE=as.Date(PAICOL$DATE,origin=PAICOL$DATE[1])
+
+summary(PAICOL)
+View(PAICOL)
